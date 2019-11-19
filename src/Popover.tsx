@@ -29,6 +29,12 @@ class Popover extends React.Component<PopoverProps, {}> {
         this.updatePopover(isOpen);
     }
 
+    constructor(props: PopoverProps) {
+        super(props);
+        this.willUnmount = false;
+        this.willMount = true;
+    }
+
     public componentDidUpdate(prevProps: PopoverProps) {
         if (this.target == null) { this.target = findDOMNode(this) as Element; }
 
@@ -52,11 +58,6 @@ class Popover extends React.Component<PopoverProps, {}> {
 
             this.updatePopover(isOpen);
         }
-    }
-
-    public componentWillMount() {
-        this.willUnmount = false;
-        this.willMount = true;
     }
 
     public componentWillUnmount() {
